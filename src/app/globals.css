@@ -206,8 +206,14 @@ body {
 
 /* Custom Hover Scale Classes */
 @layer utilities {
+  .hover-scale-125 {
+    @apply transition-all hover:scale-125 duration-300;
+  }
   .hover-scale-110 {
     @apply transition-all hover:scale-110 duration-300;
+  }
+  .hover-scale-105 {
+    @apply transition-all hover:scale-105 duration-300;
   }
   .hover-scale-90 {
     @apply transition-all hover:scale-90 duration-300;

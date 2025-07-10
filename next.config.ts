@@ -1,11 +1,17 @@
 import type { NextConfig } from 'next';
-
+import path from 'path';
 const nextConfig: NextConfig = {
   webpack(config) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const fileLoaderRule = config.module.rules.find((rule: any) =>
       rule.test?.test?.('.svg')
     );
+
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+    };
 
     config.module.rules.push(
       {

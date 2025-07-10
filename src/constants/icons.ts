@@ -13,6 +13,7 @@ import settings from '@assets/icons/settings.svg';
 import sharing from '@assets/icons/sharing.svg';
 import sunDark from '@assets/icons/sun-dark.svg';
 import sunLight from '@assets/icons/sun-light.svg';
+import logo from '@assets/illustrations/logo.svg';
 
 export {
   arrow,
@@ -21,6 +22,7 @@ export {
   userCircle,
   linkedin,
   mail,
+  logo,
   menu,
   message,
   retry,
