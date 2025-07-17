@@ -1,22 +1,25 @@
-import Image from 'next/image';
+'use client';
+import { Card } from '@bugg-m/bugg-ui';
+import { RouteEnums } from '@enums/route-enums';
+import { Image } from '@bugg-m/bugg-ui';
 import Link from 'next/link';
 
 export default function Home() {
   const featuredDestinations = [
     {
-      name: 'Amarnath',
+      name: 'Amarnath Yatra',
       href: '/destinations/amarnath',
-      image: '/images/amarnath.jpg',
+      image: '/amarnath.jpg',
     },
     {
       name: 'Vaishno Devi',
       href: '/destinations/vaishno-devi',
-      image: '/images/vaishno.jpg',
+      image: '/maa-vaishno-devi.jpg',
     },
     {
-      name: 'Tirupati',
-      href: '/destinations/tirupati',
-      image: '/images/tirupati.jpg',
+      name: 'Vrindavan',
+      href: '/destinations/bankey-bihari',
+      image: '/bankey-bihari.jpg',
     },
   ];
 
@@ -59,91 +62,91 @@ export default function Home() {
     },
   ];
   return (
-    <main className="flex-1">
-      {/* <section
-        className="relative h-96 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+    <main className="flex-1 space-y-16">
+      <section
+        className="relative h-[50vh] bg-cover bg-center md:h-[95vh]"
+        style={{ backgroundImage: "url('/mountain.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-30" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
-          <h1 className="text-4xl font-bold md:text-6xl">
+        <div className="relative z-10 flex h-full flex-col items-center justify-end space-y-4 px-2 py-10 text-center">
+          <h1 className="header text-2xl font-bold text-neutral-50 hover:text-neutral-100 sm:text-4xl md:text-5xl">
             Embark on Your Spiritual Journey
           </h1>
-          <p className="mt-4 text-lg md:text-2xl">
+          <p className="title text-xs text-neutral-100 hover:text-neutral-200 sm:text-sm md:text-xl">
             Discover sacred temples and pilgrimage routes across India
           </p>
           <Link
-            href="/destinations"
-            className="mt-6 rounded-lg bg-indigo-600 px-6 py-3 hover:bg-indigo-700"
+            className="rounded-full bg-primary-500 px-3 py-1 text-xs md:px-4 md:py-2 md:text-sm"
+            href={RouteEnums.DESTINATION}
           >
             Explore Destinations
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="mb-8 text-3xl font-semibold">Featured Destinations</h2>
+      <section className="mx-auto max-w-7xl space-y-8">
+        <h2 className="header text-xl font-semibold md:text-3xl">
+          Featured Destinations
+        </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredDestinations.map((dest) => (
-            <Link
-              key={dest.href}
-              href={dest.href}
+            <Card
+              key={dest.name}
               className="group block overflow-hidden rounded-lg shadow-lg transition hover:shadow-xl"
+              variant="outlined"
+              colorScheme="secondary"
+              tone={200}
             >
-              <div className="relative h-48">
+              <div className="relative h-72 transition group-hover:scale-105">
                 <Image
+                  rounded="md"
+                  size="full"
                   src={dest.image}
                   alt={dest.name}
-                  width={40}
-                  height={40}
-                  className="object-cover transition group-hover:scale-105"
                 />
               </div>
               <div className="bg-white p-4">
-                <h3 className="text-xl font-medium">{dest.name}</h3>
+                <span className="block text-xl font-semibold capitalize text-neutral-700 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-800 md:text-lg">
+                  {dest.name}
+                </span>
               </div>
-            </Link>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="bg-gray-50 px-4 py-16">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="mb-8 text-3xl font-semibold">Popular Packages</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {featuredPackages.map((pkg) => (
-              <div
-                key={pkg.href}
-                className="rounded-lg border p-6 shadow-sm transition hover:shadow-md"
-              >
-                <h3 className="mb-2 text-2xl font-bold">{pkg.title}</h3>
-                <p className="mb-4 font-semibold text-indigo-600">
-                  {pkg.price}
-                </p>
-                <p className="mb-4 text-gray-700">{pkg.description}</p>
-                <Link
-                  href={pkg.href}
-                  className="text-indigo-600 hover:underline"
-                >
-                  Learn More →
-                </Link>
-              </div>
-            ))}
-          </div>
+      <section className="mx-auto max-w-7xl space-y-8">
+        <h2 className="header text-xl font-semibold md:text-3xl">
+          Popular Packages
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {featuredPackages.map((pkg) => (
+            <Card key={pkg.href} hoverAble className="space-y-4">
+              <h3 className="title text-xl font-semibold">{pkg.title}</h3>
+              <p className="font-semibold text-indigo-600">{pkg.price}</p>
+              <p className="paragraph-sm text-secondary-600">
+                {pkg.description}
+              </p>
+              <Link href={pkg.href} className="text-indigo-600 hover:underline">
+                Learn More →
+              </Link>
+            </Card>
+          ))}
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <h2 className="mb-8 text-3xl font-semibold">From Our Blog</h2>
+        <h2 className="header text-xl font-semibold md:text-3xl">
+          From Our Blog
+        </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
-            <div
-              key={post.href}
-              className="overflow-hidden rounded-lg shadow-lg transition hover:shadow-xl"
-            >
+            <Card key={post.href} hoverAble className="space-y-4">
               <div className="bg-white p-6">
-                <h3 className="mb-2 text-xl font-medium">{post.title}</h3>
-                <p className="mb-4 text-gray-700">{post.excerpt}</p>
+                <h3 className="title mb-2 text-lg">{post.title}</h3>
+                <p className="mb-4 text-sm font-medium text-neutral-600">
+                  {post.excerpt}
+                </p>
                 <Link
                   href={post.href}
                   className="text-indigo-600 hover:underline"
@@ -151,12 +154,12 @@ export default function Home() {
                   Read More →
                 </Link>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </section>
 
-      <section className="bg-indigo-600 px-4 py-16 text-white">
+      {/* <section className="bg-indigo-600 px-4 py-16 text-white">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-8 text-3xl font-semibold">What Our Pilgrims Say</h2>
           <div className="space-y-8">

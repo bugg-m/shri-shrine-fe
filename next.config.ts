@@ -7,12 +7,6 @@ const nextConfig: NextConfig = {
       rule.test?.test?.('.svg')
     );
 
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      react: path.resolve(__dirname, 'node_modules/react'),
-      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
-    };
-
     config.module.rules.push(
       {
         ...fileLoaderRule,

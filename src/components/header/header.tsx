@@ -16,10 +16,10 @@ const Header: React.FC = () => {
     { href: RouteEnums.HOME, id: 1, label: 'home' },
     { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
     { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
-    { href: RouteEnums.ITINERARIES, id: 4, label: 'Itineraries' },
-    { href: RouteEnums.BLOG, id: 5, label: 'Blog' },
-    { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },
-    { href: RouteEnums.CONTACT, id: 7, label: 'Contact' },
+    // { href: RouteEnums.ITINERARIES, id: 4, label: 'Itineraries' },
+    // { href: RouteEnums.BLOG, id: 5, label: 'Blog' },
+    // { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },
+    // { href: RouteEnums.CONTACT, id: 7, label: 'Contact' },
   ];
   return (
     <nav
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="flex-between-center mx-auto w-full px-4 py-1 md:px-8 md:py-3">
+      <div className="flex-between-center mx-auto w-full px-6 py-1 md:px-8 md:py-3">
         <LogoIcon />
 
         <div className="flex-center gap-1 md:gap-8">
