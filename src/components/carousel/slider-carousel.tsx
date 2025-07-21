@@ -105,16 +105,6 @@ export default function SliderCarousel<T>({
   const gap = 16;
   const itemWidth = `calc((100% - ${gap * (itemsToShow - 1)}px) / ${itemsToShow})`;
 
-  const getTransformValue = () => {
-    if (totalItems <= itemsToShow) return 0;
-
-    const itemWidthPercent = 100 / itemsToShow;
-    const gapWidthPercent = (gap / (window.innerWidth || 1200)) * 100;
-    const totalItemWidth = itemWidthPercent + gapWidthPercent;
-
-    return currentIndex * totalItemWidth;
-  };
-
   return (
     <div
       className={`relative w-full ${className}`}
@@ -123,17 +113,17 @@ export default function SliderCarousel<T>({
     >
       <button
         onClick={goToPrev}
-        className="absolute z-20 left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:bg-white"
         aria-label="Previous slide"
       >
-        <FaChevronLeft className="w-5 h-5" />
+        <FaChevronLeft className="size-5" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute z-20 right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:bg-white"
         aria-label="Next slide"
       >
-        <FaChevronRight className="w-5 h-5" />
+        <FaChevronRight className="size-5" />
       </button>
 
       <div className="overflow-hidden">
@@ -147,7 +137,7 @@ export default function SliderCarousel<T>({
           {[...data, ...data.slice(0, itemsToShow)].map((item, index) => (
             <div
               key={`${index % totalItems}-${Math.floor(index / totalItems)}`}
-              className="flex-shrink-0"
+              className="shrink-0"
               style={{
                 width: itemWidth,
               }}

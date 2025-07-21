@@ -11,32 +11,39 @@ import usePathNavigator from '@hooks/useNavigator';
 
 const Header: React.FC = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(window?.scrollY > 100);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const { pathname } = usePathNavigator();
   const menuItems = [
     { href: RouteEnums.HOME, id: 1, label: 'home' },
-    { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
-    { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
+    // { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
+    // { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
     // { href: RouteEnums.ITINERARIES, id: 4, label: 'Itineraries' },
     // { href: RouteEnums.BLOG, id: 5, label: 'Blog' },
     // { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },
     // { href: RouteEnums.CONTACT, id: 7, label: 'Contact' },
   ];
 
+  // Initialize scroll state on mount
+  const handleInitialScroll = () => {
+    setIsScrolled(window.scrollY > 100);
+  };
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 100) setIsScrolled(true);
       else setIsScrolled(false);
     };
 
+    handleInitialScroll();
+
     window.addEventListener('scroll', onScroll);
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <nav
-      className={`transition-all duration-300 ${isScrolled ? 'backdrop-blur-sm bg-black/40 border-b border-white/20' : ''}`}
+      className={`transition-all duration-300 ${isScrolled ? 'border-b border-white/20 bg-black/40 backdrop-blur-sm' : ''}`}
       role="navigation"
       aria-label="Main Navigation"
     >

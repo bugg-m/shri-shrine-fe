@@ -10,7 +10,7 @@ const LogoIcon: React.FC = () => {
       <div className="hover-scale-125">
         <Icon src={logo} className="size-6 p-0 md:size-8" />
       </div>
-      <span className="mt-2 md:mt-3 text-xl font-semibold text-neutral-50 md:text-2xl">
+      <span className="mt-2 text-xl font-semibold text-neutral-50 md:mt-3 md:text-2xl">
         ShriShine
       </span>
     </Link>

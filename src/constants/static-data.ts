@@ -1,3 +1,5 @@
+import { PackageCardProps } from '@components/cards/package-card';
+
 const destinations = [
   {
     name: 'Amarnath Yatra',
@@ -43,24 +45,101 @@ const destinations = [
   },
 ];
 
-const packages = [
+const packagesData: PackageCardProps[] = [
   {
-    title: 'Premium Yatra',
-    href: '/packages/premium',
-    price: '₹20,000',
-    description: 'Comfortable stay, helicopter ride, guided meals',
+    id: '1',
+    title: 'Divine Amarnath Yatra',
+    destination: 'Amarnath Cave',
+    image: '/images/amarnath.jpg',
+    price: 28999,
+    originalPrice: 35999,
+    duration: '6 Days',
+    rating: 4.9,
+    reviews: 234,
+    difficulty: 'Challenging',
+    highlights: [
+      'Helicopter ride',
+      'Sacred cave darshan',
+      'Professional guide',
+    ],
+    inclusions: ['Accommodation', 'Meals', 'Transport', 'Permits'],
+    badge: 'Best Seller',
+    isPopular: true,
   },
   {
-    title: 'Standard Yatra',
-    href: '/packages/standard',
-    price: '₹12,000',
-    description: 'Base camp stay, trekking support, meals',
+    id: '2',
+    title: 'Vaishno Devi Yatra',
+    destination: 'Vaishno Devi',
+    image: '/images/maa-vaishno-devi.jpg',
+    price: 15999,
+    duration: '4 Days',
+    rating: 4.8,
+    reviews: 456,
+    difficulty: 'Moderate',
+    highlights: ['Temple darshan', 'Bhawan visit', 'Aarti participation'],
+    inclusions: ['Hotel stay', 'Meals', 'Local transport', 'Guide'],
   },
   {
-    title: 'Budget Yatra',
-    href: '/packages/budget',
-    price: '₹8,000',
-    description: 'Basic accommodation, group trekking',
+    id: '3',
+    title: 'Bankey Bihari Darshan',
+    destination: 'Vrindavan',
+    image: '/images/bankey-bihari.jpg',
+    price: 12999,
+    duration: '5 Days',
+    rating: 4.7,
+    reviews: 189,
+    difficulty: 'Easy',
+    highlights: ['Krishna temples', 'Yamuna aarti', 'Cultural programs'],
+    inclusions: ['Dharamshala', 'Prasadam', 'Local sightseeing'],
+    badge: 'Family Friendly',
+  },
+  {
+    id: '4',
+    title: 'Char Dham Darshan',
+    destination: 'Uttarakhand',
+    image: '/images/char-dham.jpg',
+    price: 45999,
+    originalPrice: 52999,
+    duration: '12 Days',
+    rating: 4.9,
+    reviews: 98,
+    difficulty: 'Challenging',
+    highlights: ['All four dhams', 'Helicopter option', 'VIP darshan'],
+    inclusions: [
+      'Luxury hotels',
+      'All meals',
+      'AC transport',
+      'Medical support',
+    ],
+    badge: 'Premium',
+    isPopular: true,
+  },
+  {
+    id: '5',
+    title: 'Tirupati Balaji Darshan',
+    destination: 'Tirupati',
+    image: '/images/tirupati.jpg',
+    price: 8999,
+    duration: '3 Days',
+    rating: 4.6,
+    reviews: 567,
+    difficulty: 'Easy',
+    highlights: ['Special darshan', 'Prasadam', 'Local temples'],
+    inclusions: ['Budget hotels', 'Breakfast', 'Temple transport'],
+  },
+  {
+    id: '6',
+    title: 'Kedarnath Trek & Temple',
+    destination: 'Kedarnath',
+    image: '/images/kedarnath.jpg',
+    price: 22999,
+    duration: '7 Days',
+    rating: 4.8,
+    reviews: 145,
+    difficulty: 'Challenging',
+    highlights: ['Himalayan trek', 'Temple darshan', 'Mountain views'],
+    inclusions: ['Trekking gear', 'Guide', 'Meals', 'Accommodation'],
+    badge: 'Adventure',
   },
 ];
 
@@ -82,11 +161,23 @@ const blogs = [
   },
 ];
 
-const customResponsive = [
+const destinationResponsiveness = [
   { breakpoint: 1024, items: 4 },
   { breakpoint: 768, items: 3 },
   { breakpoint: 640, items: 2 },
   { breakpoint: 480, items: 1 },
 ];
 
-export { destinations, packages, blogs, customResponsive };
+const packageResponsiveness = [
+  { breakpoint: 768, items: 3 },
+  { breakpoint: 640, items: 2 },
+  { breakpoint: 480, items: 1 },
+];
+
+export {
+  destinations,
+  packagesData,
+  blogs,
+  destinationResponsiveness,
+  packageResponsiveness,
+};
