@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import LogoIcon from '../logo-component/logo-icon';
 import { RouteEnums } from '@enums/route-enums';
@@ -11,6 +11,8 @@ import usePathNavigator from '@hooks/useNavigator';
 
 const Header: React.FC = () => {
   const [showMobileNavbar, setShowMobileNavbar] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(window?.scrollY > 100);
+
   const { pathname } = usePathNavigator();
   const menuItems = [
     { href: RouteEnums.HOME, id: 1, label: 'home' },
@@ -21,9 +23,20 @@ const Header: React.FC = () => {
     // { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },
     // { href: RouteEnums.CONTACT, id: 7, label: 'Contact' },
   ];
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 100) setIsScrolled(true);
+      else setIsScrolled(false);
+    };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <nav
-      className="border-b border-neutral-100 bg-neutral-50 text-neutral-700 shadow-sm"
+      className={`transition-all duration-300 ${isScrolled ? 'backdrop-blur-sm bg-black/40 border-b border-white/20' : ''}`}
       role="navigation"
       aria-label="Main Navigation"
     >
@@ -40,7 +53,7 @@ const Header: React.FC = () => {
                 className={`hover-scale-105 uppercase hover:text-primary-500 ${
                   pathname === href || pathname.startsWith(href + '/')
                     ? 'text-primary-500'
-                    : 'text-neutral-700'
+                    : 'text-neutral-50'
                 }`}
               >
                 {label}

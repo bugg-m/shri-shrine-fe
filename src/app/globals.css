@@ -168,19 +168,19 @@ body {
     @apply transition-transform tracking-tight duration-300 transform hover:translate-x-1;
   }
   .paragraph-md {
-    @apply text-neutral-700 text-base md:text-lg leading-relaxed;
+    @apply text-neutral-700 text-base md:text-lg leading-relaxed tracking-tighter;
   }
   .paragraph-sm {
-    @apply text-neutral-700 text-sm md:text-base leading-relaxed;
+    @apply text-neutral-600 text-xs md:text-sm leading-relaxed tracking-tighter;
   }
   .paragraph-xs {
     @apply text-neutral-600 text-xs leading-relaxed;
   }
   .header {
-    @apply inline-block mb-6 text-2xl md:text-3xl font-bold text-neutral-600 text-center tracking-tight leading-snug transition-all hover:scale-90 duration-300 hover:text-neutral-700;
+    @apply inline-block mb-2 text-2xl md:text-3xl font-bold text-neutral-600 text-center tracking-tighter uppercase leading-snug transition-all hover:scale-90 duration-300 hover:text-neutral-700;
   }
   .title {
-    @apply text-xl font-semibold text-neutral-700 hover:text-neutral-600 md:text-lg leading-relaxed transition-all tracking-wider duration-300 transform hover:translate-x-2;
+    @apply text-xl mb-2 font-semibold text-neutral-700 hover:text-neutral-600 md:text-lg leading-relaxed transition-all tracking-tighter duration-300 transform hover:translate-x-2;
   }
   .sub-title {
     @apply text-sm font-semibold text-neutral-700 hover:text-neutral-600 md:text-base leading-relaxed transition-all tracking-wider duration-300 transform hover:translate-x-2;
@@ -189,10 +189,10 @@ body {
 
 /* Background Gradient Classes */
 @layer utilities {
-  .navbar-bg {
-    @apply bg-gradient-to-r from-secondary-800 via-secondary-700 to-secondary-600;
+  .gradient-bg {
+    @apply bg-gradient-to-r from-gray-900 via-blue-900 to-pink-900;
   }
-  .nx-card-lg {
+  .card-gradient {
     @apply bg-gradient-to-br from-primary-50 to-white;
   }
 }
@@ -258,6 +258,17 @@ body {
     }
   }
 
+  @keyframes blurNavbar {
+    from {
+      backdrop-filter: blur(0px);
+      background-color: rgba(255, 255, 255, 0);
+    }
+    to {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
   /* Modern browsers with view() timeline support */
   @supports (animation-timeline: view()) {
     .animate-appear-bl {
@@ -283,6 +294,12 @@ body {
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
     }
+
+    .animate-navbar-blur {
+      animation: blurNavbar linear;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
   }
 
   /* Fallback for browsers without view() timeline support */
@@ -292,6 +309,11 @@ body {
     .animate-appear-tl,
     .animate-appear-tr {
       animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .animate-navbar-blur {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     @keyframes fadeIn {
