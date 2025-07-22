@@ -61,7 +61,12 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
     }
   };
   return (
-    <Card className="group overflow-hidden p-0">
+    <Card
+      className="group w-72 overflow-hidden p-0"
+      variant="outlined"
+      colorScheme="secondary"
+      tone={200}
+    >
       {/* Image Container */}
       <section className="relative overflow-hidden">
         <Image
@@ -155,11 +160,11 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
           <h4 className="mb-1 text-sm font-semibold text-neutral-700">
             Includes
           </h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex h-12 flex-wrap gap-2">
             {packageItem.inclusions.map((inclusion, index) => (
               <span
                 key={index}
-                className="rounded-md bg-secondary-100 px-1.5 py-0.5 text-xs text-neutral-600"
+                className="flex-center h-4 rounded-sm bg-secondary-100 px-1 text-2xs text-neutral-600"
               >
                 {inclusion}
               </span>

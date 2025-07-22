@@ -41,7 +41,8 @@ const Destinations = () => {
   return (
     <SectionWrapper>
       <SectionHeader
-        title="Sacred Pilgrimage Destinations"
+        title="Sacred Pilgrimage"
+        colorTitle="Destinations"
         subTitle="Experience the divinity and culture of India through pilgrimages to
           some of the most revered shrines and temples spread across the nation."
       />

@@ -21,7 +21,8 @@ const PackagesSection: React.FC = () => {
   return (
     <SectionWrapper>
       <SectionHeader
-        title="Popular Packages"
+        title="Popular"
+        colorTitle="Packages"
         subTitle="Choose from a variety of spiritual packages tailored for your comfort
         and devotion. From luxury stays to budget yatras, we have something for
         everyone."
