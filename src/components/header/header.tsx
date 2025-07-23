@@ -37,7 +37,7 @@ const Header: React.FC = () => {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="flex-between-center mx-auto w-full px-6 py-1 md:px-8 md:py-3">
+      <div className="flex-between-center mx-auto w-full px-6 py-1 md:px-8">
         <LogoIcon />
 
         <div className="flex-center gap-1 md:gap-8">
