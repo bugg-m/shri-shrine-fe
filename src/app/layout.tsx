@@ -40,12 +40,8 @@ export default function RootLayout({
             <SideNavbar />
           </aside> */}
 
-          <main className="responsive-container min-h-screen w-full scroll-smooth bg-secondary-100">
-            <section className="section flex-center mx-auto h-full space-y-5 border-x border-secondary-200 bg-secondary-50">
-              {children}
-            </section>
-          </main>
-          <footer className="bg-secondary-700 text-neutral-200">
+          {children}
+          <footer className="border-t border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
             <Footer />
           </footer>
           <Toaster position="top-center" reverseOrder={true} />

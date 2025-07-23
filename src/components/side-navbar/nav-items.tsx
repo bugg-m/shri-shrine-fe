@@ -1,11 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { Icon } from '@bugg-m/bugg-ui';
-
-import { arrow } from '@constants/icons';
 
 import { MenuItem } from './side-navbar';
 import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 
 interface NavItemsProps {
   menuItems: MenuItem[];
@@ -30,13 +28,12 @@ const NavItems: React.FC<NavItemsProps> = ({ menuItems, isChild }) => {
               className="group flex cursor-pointer items-center gap-1 rounded px-2 py-1 capitalize hover:bg-secondary-100 hover:text-neutral-800"
             >
               <span>{item.name}</span>
-              <Icon
+              <ChevronDown
                 className={`rounded-md text-neutral-50 transition-transform duration-300 hover:bg-secondary-100 group-hover:text-neutral-700 ${
                   isMenuItemOpen?.isOpen && isMenuItemOpen?.id === item.name
                     ? ''
                     : '-rotate-90'
                 }`}
-                src={arrow}
               />
             </div>
           ) : (

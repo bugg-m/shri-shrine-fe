@@ -1,10 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { Button, Icon } from '@bugg-m/bugg-ui';
-
-import { Step } from '@constants/icons';
+import { Button } from '@bugg-m/bugg-ui';
 
 import { NavItems } from './nav-items';
+import { StepBack } from 'lucide-react';
 
 export interface MenuItem {
   name: string;
@@ -37,9 +36,8 @@ const SideNavbar: React.FC = () => {
           isOpen ? 'left-48' : 'left-10'
         }`}
       >
-        <Icon
-          src={Step}
-          size="md"
+        <StepBack
+          size={20}
           className={`${
             isOpen ? '' : 'rotate-180'
           } text-neutral-200 transition-transform duration-300`}
