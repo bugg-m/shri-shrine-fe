@@ -3,42 +3,42 @@ import { PackageCardProps } from '@components/cards/package-card';
 const destinations = [
   {
     name: 'Amarnath Yatra',
-    href: '/destinations/amarnath',
+    href: '',
     image: '/images/amarnath.jpg',
     description:
       'A sacred Himalayan cave temple housing the naturally formed ice Shiva Linga.',
   },
   {
     name: 'Vaishno Devi',
-    href: '/destinations/vaishno-devi',
+    href: '',
     image: '/images/maa-vaishno-devi.jpg',
     description:
       'Nestled in Trikuta Hills, the shrine is dedicated to Goddess Vaishno Devi.',
   },
   {
     name: 'Vrindavan',
-    href: '/destinations/bankey-bihari',
+    href: '',
     image: '/images/bankey-bihari.jpg',
     description:
       'A divine town where Lord Krishna spent his childhood, filled with temples and devotion.',
   },
   {
     name: 'Golden Temple',
-    href: '/destinations/golden-temple',
+    href: '',
     description:
       'The holiest Sikh shrine, known for its golden dome and peaceful atmosphere.',
     image: '/images/golden-temple.jpg',
   },
   {
     name: 'Kedarnath',
-    href: '/destinations/kedarnath',
+    href: '',
     description:
       'High altitude temple dedicated to Lord Shiva in the Himalayas.',
     image: '/images/kedarnath.jpg',
   },
   {
     name: 'Tirupati',
-    href: '/destinations/tirupati',
+    href: '',
     description:
       'Famous temple of Lord Venkateswara, one of the richest temples in the world.',
     image: '/images/tirupati.jpg',
@@ -143,21 +143,89 @@ const packagesData: PackageCardProps[] = [
   },
 ];
 
-const blogs = [
+const aboutUsValues = [
   {
-    title: 'History of Amarnath Yatra',
-    href: '/blog/amarnath-history',
-    excerpt: 'Explore the rich history of the Amarnath pilgrimage...',
+    title: 'Spiritual Authenticity',
+    desc: 'Deep-rooted connection to Krishna consciousness',
   },
   {
-    title: 'Packing Checklist for All Pilgrimages',
-    href: '/blog/packing-checklist',
-    excerpt: 'Essentials you must carry for a smooth journey...',
+    title: 'Personal Touch',
+    desc: 'Every journey crafted with individual care',
   },
   {
-    title: 'Spiritual Significance of Indian Temples',
-    href: '/blog/spiritual-significance',
-    excerpt: 'Understand the deeper meaning behind the yatra...',
+    title: 'Local Expertise',
+    desc: 'Born and raised in the sacred land of Braj',
+  },
+  {
+    title: 'Devotional Service',
+    desc: 'Serving pilgrims with love and dedication',
+  },
+];
+
+const ourExperiences = [
+  {
+    icon: '🛕',
+    title: 'Sacred Temple Darshan',
+    description:
+      'Guided visits to Banke Bihari Ji, Prem Mandir, ISKCON, Dwarkadhish, and other divine abodes',
+    image: '/images/bankey-bihari.jpg',
+    features: [
+      'VIP Darshan Access',
+      'Temple History & Stories',
+      'Proper Ritual Guidance',
+    ],
+  },
+  {
+    icon: '🪔',
+    title: 'Yamuna Aarti & Boat Rides',
+    description:
+      'Experience the divine evening aarti under glowing skies with serene boat journeys',
+    image: '/images/yamuna-aarti.jpg',
+    features: [
+      'Golden Hour Timing',
+      'Traditional Aarti Songs',
+      'Peaceful River Experience',
+    ],
+  },
+  {
+    icon: '🚶‍♂️',
+    title: 'Spiritual Parikrama Walks',
+    description:
+      'Sacred circumambulation paths that awaken devotion and inner stillness',
+    image: '/images/parikrama.jpg',
+    features: [
+      'Govardhan Parikrama',
+      'Vrindavan Parikrama',
+      'Guided Meditation',
+    ],
+  },
+  {
+    icon: '🙏',
+    title: 'Saints & Spiritual Leaders',
+    description:
+      'Meet and receive blessings from authentic local saints and spiritual guides',
+    image: '/images/saints.jpg',
+    features: ['Personal Blessings', 'Spiritual Discourse', 'Q&A Sessions'],
+  },
+  {
+    icon: '🍽️',
+    title: 'Sattvic Meals & Prasad',
+    description:
+      'Traditional vegetarian meals and blessed prasadam experiences',
+    image: '/images/prasad.jpg',
+    features: ['Temple Prasad', 'Local Delicacies', 'Pure Vegetarian'],
+  },
+  {
+    icon: '🎉',
+    title: 'Festival Celebrations',
+    description:
+      'Special Janmashtami and Holi celebration tours with authentic local traditions',
+    image: '/images/festival.jpg',
+    features: [
+      'Holi in Barsana',
+      'Janmashtami Celebrations',
+      'Raas Leela Performances',
+    ],
   },
 ];
 
@@ -177,7 +245,8 @@ const packageResponsiveness = [
 export {
   destinations,
   packagesData,
-  blogs,
   destinationResponsiveness,
   packageResponsiveness,
+  aboutUsValues,
+  ourExperiences,
 };

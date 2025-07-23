@@ -41,7 +41,7 @@ export default function RootLayout({
           </aside> */}
 
           {children}
-          <footer className="bg-secondary-700 text-neutral-200">
+          <footer className="border-t border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
             <Footer />
           </footer>
           <Toaster position="top-center" reverseOrder={true} />

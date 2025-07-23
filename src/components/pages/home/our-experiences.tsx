@@ -2,75 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import SectionWrapper from '@components/wrappers/section-wrapper';
 import SectionHeader from '@components/wrappers/section-header';
+import { Card } from '@bugg-m/bugg-ui';
+import { ourExperiences } from '@constants/static-data';
 
 const OurExperiences: React.FC = () => {
-  const experiences = [
-    {
-      icon: '🛕',
-      title: 'Sacred Temple Darshan',
-      description:
-        'Guided visits to Banke Bihari Ji, Prem Mandir, ISKCON, Dwarkadhish, and other divine abodes',
-      image: '/images/bankey-bihari.jpg',
-      features: [
-        'VIP Darshan Access',
-        'Temple History & Stories',
-        'Proper Ritual Guidance',
-      ],
-    },
-    {
-      icon: '🪔',
-      title: 'Yamuna Aarti & Boat Rides',
-      description:
-        'Experience the divine evening aarti under glowing skies with serene boat journeys',
-      image: '/images/yamuna-aarti.jpg',
-      features: [
-        'Golden Hour Timing',
-        'Traditional Aarti Songs',
-        'Peaceful River Experience',
-      ],
-    },
-    {
-      icon: '🚶‍♂️',
-      title: 'Spiritual Parikrama Walks',
-      description:
-        'Sacred circumambulation paths that awaken devotion and inner stillness',
-      image: '/images/parikrama.jpg',
-      features: [
-        'Govardhan Parikrama',
-        'Vrindavan Parikrama',
-        'Guided Meditation',
-      ],
-    },
-    {
-      icon: '🙏',
-      title: 'Saints & Spiritual Leaders',
-      description:
-        'Meet and receive blessings from authentic local saints and spiritual guides',
-      image: '/images/saints.jpg',
-      features: ['Personal Blessings', 'Spiritual Discourse', 'Q&A Sessions'],
-    },
-    {
-      icon: '🍽️',
-      title: 'Sattvic Meals & Prasad',
-      description:
-        'Traditional vegetarian meals and blessed prasadam experiences',
-      image: '/images/prasad.jpg',
-      features: ['Temple Prasad', 'Local Delicacies', 'Pure Vegetarian'],
-    },
-    {
-      icon: '🎉',
-      title: 'Festival Celebrations',
-      description:
-        'Special Janmashtami and Holi celebration tours with authentic local traditions',
-      image: '/images/festival.jpg',
-      features: [
-        'Holi in Barsana',
-        'Janmashtami Celebrations',
-        'Raas Leela Performances',
-      ],
-    },
-  ];
-
   return (
     <SectionWrapper>
       <SectionHeader
@@ -82,12 +17,14 @@ const OurExperiences: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Experiences Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((experience, index) => (
-            <div
+          {ourExperiences.map((experience, index) => (
+            <Card
               key={index}
-              className="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              variant="outlined"
+              colorScheme="secondary"
+              tone={200}
+              className="group overflow-hidden p-0"
             >
-              {/* Image */}
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={experience.image}
@@ -101,21 +38,20 @@ const OurExperiences: React.FC = () => {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <div className="p-3">
+                <h3 className="mb-1 text-lg font-semibold text-neutral-700">
                   {experience.title}
                 </h3>
-                <p className="mb-4 leading-relaxed text-gray-600">
+                <p className="mb-1 text-sm leading-relaxed text-neutral-600">
                   {experience.description}
                 </p>
 
                 {/* Features */}
-                <div className="space-y-2">
+                <div className="ml-2 space-y-1">
                   {experience.features.map((feature, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center text-sm text-gray-700"
+                      className="flex items-center text-xs text-neutral-700"
                     >
                       <div className="mr-2 size-1.5 rounded-full bg-orange-500"></div>
                       {feature}
@@ -123,7 +59,7 @@ const OurExperiences: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

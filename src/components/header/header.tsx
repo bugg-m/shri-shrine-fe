@@ -2,11 +2,10 @@
 import React, { useEffect, useState } from 'react';
 
 import LogoIcon from '../logo-component/logo-icon';
-import { RouteEnums } from '@enums/route-enums';
 import Link from 'next/link';
-import { Icon } from '@bugg-m/bugg-ui';
-import { close, menu } from '@constants/icons';
 import usePathNavigator from '@hooks/useNavigator';
+import { Menu, X } from 'lucide-react';
+import { menuItems } from '@constants/static-link-data';
 // import { Avatar } from '@bugg-m/bugg-ui';
 
 const Header: React.FC = () => {
@@ -14,15 +13,6 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const { pathname } = usePathNavigator();
-  const menuItems = [
-    { href: RouteEnums.HOME, id: 1, label: 'home' },
-    // { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
-    // { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
-    // { href: RouteEnums.ITINERARIES, id: 4, label: 'Itineraries' },
-    // { href: RouteEnums.BLOG, id: 5, label: 'Blog' },
-    // { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },
-    // { href: RouteEnums.CONTACT, id: 7, label: 'Contact' },
-  ];
 
   // Initialize scroll state on mount
   const handleInitialScroll = () => {
@@ -75,13 +65,11 @@ const Header: React.FC = () => {
             className="hover-scale-110 hidden md:block"
           /> */}
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden">
-            <Icon
-              onClick={() => setShowMobileNavbar((prev) => !prev)}
-              src={showMobileNavbar ? close : menu}
-              iconColor="secondary"
-              size="md"
-            />
+          <div
+            className="text-white lg:hidden"
+            onClick={() => setShowMobileNavbar((prev) => !prev)}
+          >
+            {showMobileNavbar ? <X size={20} /> : <Menu size={20} />}
           </div>
         </div>
       </div>

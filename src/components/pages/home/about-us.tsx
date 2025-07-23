@@ -1,28 +1,10 @@
 import { Card, Image } from '@bugg-m/bugg-ui';
 import FloatingParticlesEffect from '@components/effects/floating-particle-effect';
 import SectionWrapper from '@components/wrappers/section-wrapper';
+import { aboutUsValues } from '@constants/static-data';
 import React from 'react';
 
 const AboutUs: React.FC = () => {
-  const values = [
-    {
-      title: 'Spiritual Authenticity',
-      desc: 'Deep-rooted connection to Krishna consciousness',
-    },
-    {
-      title: 'Personal Touch',
-      desc: 'Every journey crafted with individual care',
-    },
-    {
-      title: 'Local Expertise',
-      desc: 'Born and raised in the sacred land of Braj',
-    },
-    {
-      title: 'Devotional Service',
-      desc: 'Serving pilgrims with love and dedication',
-    },
-  ];
-
   return (
     <SectionWrapper>
       <div className="py-5 text-center">
@@ -51,7 +33,7 @@ const AboutUs: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            {values.map((value) => (
+            {aboutUsValues.map((value) => (
               <Card
                 key={value.title}
                 hoverAble

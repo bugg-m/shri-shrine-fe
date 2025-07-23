@@ -1,8 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Icon } from '@bugg-m/bugg-ui';
-
-import { sunDark, sunLight } from '@constants/icons';
+import { Sun, SunDim } from 'lucide-react';
 
 const ToggleTheme: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(false);
@@ -16,15 +14,14 @@ const ToggleTheme: React.FC = () => {
   }, [darkTheme]);
 
   return (
-    <Icon
-      src={darkTheme ? sunDark : sunLight}
-      size="md"
+    <div
       className={`hover-scale-110 hover:bg-primary-100 ${
         darkTheme ? 'text-secondary-50' : 'text-primary-600'
       }`}
-      rounded="full"
       onClick={() => setDarkTheme(!darkTheme)}
-    />
+    >
+      {darkTheme ? <SunDim size={20} /> : <Sun size={20} />}
+    </div>
   );
 };
 

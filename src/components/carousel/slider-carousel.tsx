@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ResponsiveBreakpoint {
   breakpoint: number;
@@ -116,14 +116,14 @@ export default function SliderCarousel<T>({
         className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:bg-white"
         aria-label="Previous slide"
       >
-        <FaChevronLeft className="size-5" />
+        <ChevronLeft className="size-5" />
       </button>
       <button
         onClick={goToNext}
         className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all duration-200 hover:scale-110 hover:bg-white"
         aria-label="Next slide"
       >
-        <FaChevronRight className="size-5" />
+        <ChevronRight className="size-5" />
       </button>
 
       <div className="overflow-hidden">
