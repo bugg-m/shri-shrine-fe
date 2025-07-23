@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
       <FloatingParticlesEffect />
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-end px-4 py-10 text-white">
         <div className="mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-2 text-center">
-          <h1 className="header text-3xl font-bold leading-tight text-neutral-50 sm:text-5xl md:text-7xl lg:text-8xl">
+          <h1 className="header text-5xl font-bold leading-tight text-neutral-50 md:text-7xl lg:text-8xl">
             <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
               Radhey Radhey
             </span>
@@ -32,13 +32,8 @@ const HeroSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex-center mt-8 w-full max-w-4xl flex-col">
-          <p className="mb-6 text-center text-sm font-medium text-yellow-200">
-            Discover Sacred Destinations
-          </p>
-          <div className="flex-center animate-bounce cursor-pointer rounded-full border border-white/20 bg-white/10 p-2 text-white backdrop-blur-sm hover:bg-white/20">
-            <ArrowBigDownIcon className="size-6" />
-          </div>
+        <div className="flex-center mt-8 animate-bounce cursor-pointer rounded-full border border-white/20 bg-white/10 p-2 text-white backdrop-blur-sm hover:bg-white/20">
+          <ArrowBigDownIcon className="size-4 md:size-6" />
         </div>
       </div>
     </section>

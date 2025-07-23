@@ -7,13 +7,13 @@ import React from 'react';
 const AboutUs: React.FC = () => {
   return (
     <SectionWrapper>
-      <div className="py-5 text-center">
-        <blockquote className="mb-4 text-xl font-medium italic text-neutral-800 md:text-2xl">
+      <div className="text-center md:py-5">
+        <blockquote className="mb-4 text-base font-medium italic text-neutral-800 sm:text-xl md:text-2xl">
           &quot;हरे कृष्णा हरे कृष्णा, कृष्णा कृष्णा हरे हरे &quot;
         </blockquote>
       </div>
       <div className="grid items-center gap-6 lg:grid-cols-2">
-        <div className="space-y-8">
+        <div className="order-1 space-y-8">
           <div>
             <h2 className="mb-4 text-4xl font-bold text-neutral-900 md:text-5xl">
               Our Sacred <span className="text-orange-600">Mission</span>
@@ -49,7 +49,7 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 rounded-md bg-black/5 hover:bg-black/10">
+        <div className="relative z-10 rounded-md bg-black/5 hover:bg-black/10 md:order-2">
           <div className="absolute right-8 top-16 size-40 rounded-full bg-yellow-400/50 blur-xl"></div>
           <FloatingParticlesEffect />
           <Image

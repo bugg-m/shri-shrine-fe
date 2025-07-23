@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       <HeroSection />
-      <div className="space-y-20 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 px-4 py-20 md:px-10">
+      <div className="space-y-20 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 px-4 py-10 md:px-10 md:py-16">
         <AboutUs />
         <WhyChooseUs />
         <Destinations />

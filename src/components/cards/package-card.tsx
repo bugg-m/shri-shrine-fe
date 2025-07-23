@@ -62,7 +62,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
   };
   return (
     <Card
-      className="group w-72 overflow-hidden p-0"
+      className="group overflow-hidden p-0"
       variant="outlined"
       colorScheme="secondary"
       tone={200}
