@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
       <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <div className="mb-4">
-            <h3 className="mb-2 text-2xl font-bold text-orange-600">
+            <h3 className="mb-2 text-2xl font-bold text-primary-600">
               ShriShrine
             </h3>
             <p className="mb-4 text-sm leading-relaxed text-neutral-600">
@@ -48,27 +48,27 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="mb-6 space-y-3">
             <div className="flex items-center text-sm text-neutral-600">
-              <Mail className="mr-3 size-4 shrink-0 text-orange-500" />
+              <Mail className="mr-3 size-4 shrink-0 text-primary-500" />
               <Link
                 href="mailto:support@shrishrine.com"
-                className="transition-colors hover:text-orange-600"
+                className="transition-colors hover:text-primary-600"
               >
                 support@shrishrine.com
               </Link>
             </div>
 
             <div className="flex items-center text-sm text-neutral-600">
-              <Phone className="mr-3 size-4 shrink-0 text-orange-500" />
+              <Phone className="mr-3 size-4 shrink-0 text-primary-500" />
               <Link
                 href="tel:+919876543210"
-                className="transition-colors hover:text-orange-600"
+                className="transition-colors hover:text-primary-600"
               >
                 +91 98765 43210
               </Link>
             </div>
 
             <div className="flex items-start text-sm text-neutral-600">
-              <MapPin className="mr-3 mt-0.5 size-4 shrink-0 text-orange-500" />
+              <MapPin className="mr-3 mt-0.5 size-4 shrink-0 text-primary-500" />
               <span>
                 123 Spiritual Street,
                 <br />
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="flex items-center text-sm text-neutral-600">
-              <Clock className="mr-3 size-4 shrink-0 text-orange-500" />
+              <Clock className="mr-3 size-4 shrink-0 text-primary-500" />
               <span>24/7 Customer Support</span>
             </div>
           </div>
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
               <Link
                 key={href}
                 href={href}
-                className="flex-center size-10 rounded-full bg-white text-neutral-600 shadow-md transition-all duration-200 hover:bg-orange-50 hover:text-orange-600 hover:shadow-lg"
+                className="flex-center size-10 rounded-full bg-white text-neutral-600 shadow-md transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 hover:shadow-lg"
                 aria-label={alt}
               >
                 {icon}
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Newsletter Subscription */}
-      {/* <div className="mb-8 rounded-lg border border-orange-100 bg-white p-6 shadow-sm">
+      {/* <div className="mb-8 rounded-lg border border-primary-100 bg-white p-6 shadow-sm">
         <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-4 md:mb-0 md:mr-8">
             <h4 className="mb-1 text-lg font-semibold text-neutral-800">
@@ -123,9 +123,9 @@ const Footer: React.FC = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 rounded-l-lg border border-gray-300 px-4 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-orange-500 md:w-64"
+              className="flex-1 rounded-l-lg border border-gray-300 px-4 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-500 md:w-64"
             />
-            <button className="rounded-r-lg bg-orange-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-700">
+            <button className="rounded-r-lg bg-primary-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700">
               Subscribe
             </button>
           </div>
@@ -133,13 +133,13 @@ const Footer: React.FC = () => {
       </div> */}
 
       {/* Bottom Bar */}
-      <div className="border-t border-orange-200 py-5">
+      <div className="border-t border-primary-200 py-5">
         <div className="flex flex-col items-center justify-between text-sm text-neutral-600 md:flex-row">
           <div className="mb-2 md:mb-0">
             © {new Date().getFullYear()}{' '}
             <Link
               href="/"
-              className="font-semibold text-orange-600 transition-colors hover:text-orange-700"
+              className="font-semibold text-primary-600 transition-colors hover:text-primary-700"
             >
               ShriShrine™
             </Link>

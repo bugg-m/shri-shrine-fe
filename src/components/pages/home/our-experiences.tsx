@@ -53,7 +53,7 @@ const OurExperiences: React.FC = () => {
                       key={idx}
                       className="flex items-center text-xs text-neutral-700"
                     >
-                      <div className="mr-2 size-1.5 rounded-full bg-orange-500"></div>
+                      <div className="mr-2 size-1.5 rounded-full bg-primary-500"></div>
                       {feature}
                     </div>
                   ))}

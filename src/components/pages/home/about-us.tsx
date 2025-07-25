@@ -16,7 +16,7 @@ const AboutUs: React.FC = () => {
         <div className="order-1 space-y-8">
           <div>
             <h2 className="mb-4 text-4xl font-bold text-neutral-900 md:text-5xl">
-              Our Sacred <span className="text-orange-600">Mission</span>
+              Our Sacred <span className="text-primary-600">Mission</span>
             </h2>
             <p className="paragraph-sm mb-2">
               Born from a deep love for Lord Krishna and the sacred lands of
@@ -50,7 +50,7 @@ const AboutUs: React.FC = () => {
         </div>
 
         <div className="relative z-10 rounded-md bg-black/5 hover:bg-black/10 md:order-2">
-          <div className="absolute right-8 top-16 size-40 rounded-full bg-yellow-400/50 blur-xl"></div>
+          <div className="bg-primary-400/50 absolute right-8 top-16 size-40 rounded-full blur-xl"></div>
           <FloatingParticlesEffect />
           <Image
             src="/illustrations/krishna.svg"

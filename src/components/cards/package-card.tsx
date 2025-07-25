@@ -36,11 +36,11 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'Easy':
-        return 'bg-green-100 text-green-800';
+        return 'bg-primary-100 text-primary-800';
       case 'Moderate':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-primary-100 text-primary-800';
       case 'Challenging':
-        return 'bg-green-100 text-green-800';
+        return 'bg-primary-100 text-primary-800';
       default:
         return 'bg-secondary-100 text-neutral-800';
     }
@@ -55,7 +55,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
       case 'Family Friendly':
         return 'bg-blue-500 text-white';
       case 'Adventure':
-        return 'bg-green-600 text-white';
+        return 'bg-primary-600 text-white';
       default:
         return 'bg-secondary-500 text-white';
     }
@@ -99,7 +99,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
           <Heart
             className={`size-5 ${
               favorites.has(packageItem.id)
-                ? 'fill-current text-green-500'
+                ? 'fill-current text-primary-500'
                 : 'text-neutral-600'
             }`}
           />
@@ -132,7 +132,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
             <span>{packageItem.duration}</span>
           </div>
           <div className="flex items-center">
-            <Star className="size-3 mr-1 text-yellow-400 fill-current" />
+            <Star className="size-3 mr-1 text-primary-400 fill-current" />
             <span>
               {packageItem.rating} ({packageItem.reviews})
             </span>
@@ -148,7 +148,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
                 key={index}
                 className="ml-2 flex items-center text-xs text-neutral-600"
               >
-                <CheckCircle className="mr-2 size-3 text-green-500" />
+                <CheckCircle className="mr-2 size-3 text-primary-500" />
                 {highlight}
               </div>
             ))}
@@ -186,7 +186,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
             <span className="text-xs text-neutral-500">per person</span>
           </div>
 
-          <button className="flex-center group w-full gap-2 rounded-lg bg-gradient-to-r from-primary-500 to-green-500 py-1 font-semibold text-white transition-all duration-200 hover:from-primary-600 hover:to-green-600">
+          <button className="flex-center group w-full gap-2 rounded-lg bg-gradient-to-r from-primary-500 to-primary-500 py-1 font-semibold text-white transition-all duration-200 hover:from-primary-600 hover:to-primary-600">
             Book Now
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
           </button>

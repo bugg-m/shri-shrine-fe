@@ -14,7 +14,9 @@ const SearchDestinations = () => {
         />
         <DestinationSearchBar />
         <div className="mt-12 w-full max-w-4xl">
-          <p className="mb-4 text-center text-gray-100">Popular Destinations</p>
+          <p className="mb-4 text-center text-neutral-100">
+            Popular Destinations
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
               'Amarnath',

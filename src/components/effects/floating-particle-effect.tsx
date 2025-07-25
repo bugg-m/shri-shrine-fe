@@ -21,12 +21,12 @@ const FloatingParticlesEffect: React.FC = () => {
       'star',
     ];
     const colors = [
-      'bg-yellow-300/60',
-      'bg-orange-300/60',
-      'bg-yellow-200/40',
-      'bg-amber-300/50',
-      'bg-yellow-400/40',
-      'bg-orange-200/50',
+      'bg-primary-300/60',
+      'bg-primary-300/60',
+      'bg-primary-200/40',
+      'bg-primary-300/50',
+      'bg-primary-400/40',
+      'bg-primary-200/50',
     ];
 
     for (let i = 0; i < particleCount; i++) {

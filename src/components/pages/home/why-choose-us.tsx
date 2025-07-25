@@ -60,7 +60,7 @@ const WhyChooseUs: React.FC = () => {
             hoverAble
             className="card-gradient group border border-primary-100 text-start"
           >
-            <div className="mb-1 text-orange-500">{feature.icon}</div>
+            <div className="mb-1 text-primary-500">{feature.icon}</div>
             <h3 className="mb-2 text-base font-semibold text-neutral-900">
               {feature.title}
             </h3>
