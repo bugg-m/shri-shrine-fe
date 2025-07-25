@@ -50,7 +50,7 @@ const AboutUs: React.FC = () => {
         </div>
 
         <div className="relative z-10 rounded-md bg-black/5 hover:bg-black/10 md:order-2">
-          <div className="bg-primary-400/50 absolute right-8 top-16 size-40 rounded-full blur-xl"></div>
+          <div className="absolute right-8 top-16 size-40 rounded-full bg-yellow-400/50 blur-xl"></div>
           <FloatingParticlesEffect />
           <Image
             src="/illustrations/krishna.svg"
