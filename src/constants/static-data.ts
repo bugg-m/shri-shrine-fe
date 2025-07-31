@@ -229,6 +229,37 @@ const ourExperiences = [
   },
 ];
 
+const testimonials = [
+  {
+    name: 'Priya & Rajesh Sharma',
+    location: 'Mumbai',
+    rating: 5,
+    text: "Our Mathura-Vrindavan journey was spiritually transformative. The guide's deep knowledge of Krishna's leelas made every temple visit meaningful. Highly recommend for authentic darshan experience.",
+    package: '3D/2N Braj Darshan',
+  },
+  {
+    name: 'Sunita Agarwal',
+    location: 'Delhi',
+    rating: 5,
+    text: 'Exceptional service during Tirupati darshan. They arranged early morning slot which saved us 4 hours of waiting. The entire journey was hassle-free and devotional.',
+    package: 'Tirupati Balaji Tour',
+  },
+  {
+    name: 'Vikram Singh Family',
+    location: 'Jaipur',
+    rating: 5,
+    text: 'Perfect blend of comfort and spirituality. AC transport, quality accommodation, and knowledgeable guides made our Varanasi pilgrimage unforgettable. Worth every rupee!',
+    package: 'Kashi Vishwanath Yatra',
+  },
+  {
+    name: 'Meera Patel',
+    location: 'Ahmedabad',
+    rating: 5,
+    text: "ShriShrine understands pilgrims' needs. From Yamuna aarti to authentic prasadam, every detail was perfect. My elderly parents felt completely cared for throughout the journey.",
+    package: 'Senior Citizen Special',
+  },
+];
+
 const destinationResponsiveness = [
   { breakpoint: 1024, items: 4 },
   { breakpoint: 768, items: 3 },
@@ -249,4 +280,5 @@ export {
   packageResponsiveness,
   aboutUsValues,
   ourExperiences,
+  testimonials,
 };

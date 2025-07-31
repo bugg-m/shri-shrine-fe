@@ -15,7 +15,6 @@ const OurExperiences: React.FC = () => {
             soul and awaken divine consciousness"
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Experiences Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {ourExperiences.map((experience, index) => (
             <Card

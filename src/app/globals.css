@@ -341,6 +341,49 @@ body {
     }
   }
 
+  .animate-radhey-calligraphy path {
+    stroke: #fff;
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+
+    fill-opacity: 0;
+
+    will-change: stroke-dashoffset, fill-opacity;
+
+    animation:
+      draw-outline 3s ease-out forwards,
+      fade-fill 0.6s ease-in 1s forwards;
+  }
+
+  @supports not (animation-name: draw-outline) {
+    .animate-radhey-calligraphy path {
+      stroke-dashoffset: 0;
+      fill-opacity: 1;
+    }
+  }
+
+  @keyframes draw-outline {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes fade-fill {
+    from {
+      fill-opacity: 0;
+    }
+    to {
+      fill-opacity: 1;
+      fill: #dbeafe;
+    }
+  }
+
   /* Fallback for browsers without view() timeline support */
   @supports not (animation-timeline: view()) {
     .animate-appear-bl,

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import React from 'react';
 import { Card, Image } from '@bugg-m/bugg-ui';
 import SliderCarousel from '@components/carousel/slider-carousel';
@@ -28,12 +28,12 @@ const Destinations = () => {
       <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
         <span className="text-xl font-bold">{dest.name}</span>
         <p className="text-sm text-neutral-100">{dest.description}</p>
-        <Link
+        {/* <Link
           href={dest.href}
           className="mt-2 inline-block text-xs text-primary-500 underline hover:text-primary-400"
         >
           Explore →
-        </Link>
+        </Link> */}
       </div>
     </Card>
   );

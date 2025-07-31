@@ -99,7 +99,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
           <Heart
             className={`size-5 ${
               favorites.has(packageItem.id)
-                ? 'fill-current text-primary-500'
+                ? 'fill-current text-red-500'
                 : 'text-neutral-600'
             }`}
           />
