@@ -49,13 +49,13 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 size-full md:order-2">
-          <div className="absolute right-2 top-12 -z-10 size-52 rounded-full bg-yellow-400/50 blur-xl"></div>
+        <div className="relative z-10 mt-20 size-full md:order-2">
+          <div className="absolute -right-5 top-5 -z-10 size-60 rounded-full bg-yellow-400/50 blur-xl md:right-5 md:top-12 md:size-64 lg:right-2 lg:top-12 lg:size-52"></div>
           <FloatingParticlesEffect />
           <Image
             src="/illustrations/krishna-cow.svg"
             alt="shri krishna"
-            className="size-full object-fill"
+            className="size-full object-contain"
           />
         </div>
       </div>

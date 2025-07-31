@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { Image } from '@bugg-m/bugg-ui';
 
 const ContactForm: React.FC = () => {
@@ -79,17 +79,12 @@ const ContactForm: React.FC = () => {
 
             <div className="flex items-center">{/* <Image /> */}</div>
 
-            <div className="mt-8 rounded-lg border border-primary-100 bg-gradient-to-r from-primary-50 to-amber-50 p-6">
-              <h3 className="mb-2 font-semibold text-gray-800">
-                Why Choose ShriShrine?
-              </h3>
-              <ul className="space-y-1 text-sm text-gray-600">
-                <li>✓ Expert local guides with spiritual knowledge</li>
-                <li>✓ Comfortable AC transportation</li>
-                <li>✓ Temple darshan bookings included</li>
-                <li>✓ 24/7 customer support during journey</li>
-                <li>✓ Authentic prasadam and sattvic meals</li>
-              </ul>
+            <div className="mt-8">
+              <Image
+                src="/illustrations/krishna-flute.svg"
+                className="size-full"
+                alt="flute svg"
+              />
             </div>
           </div>
 
