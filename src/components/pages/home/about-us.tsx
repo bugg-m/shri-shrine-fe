@@ -9,7 +9,7 @@ const AboutUs: React.FC = () => {
     <SectionWrapper>
       <div className="text-center md:py-5">
         <blockquote className="mb-4 text-base font-medium italic text-neutral-800 sm:text-xl md:text-2xl">
-          &quot;हरे कृष्णा हरे कृष्णा, कृष्णा कृष्णा हरे हरे &quot;
+          &quot; हरे कृष्णा हरे कृष्णा, कृष्णा कृष्णा हरे हरे &quot;
         </blockquote>
       </div>
       <div className="grid items-center gap-6 lg:grid-cols-2">
@@ -49,13 +49,13 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
 
-        <div className="relative z-10 rounded-md bg-black/5 hover:bg-black/10 md:order-2">
-          <div className="absolute right-8 top-16 size-40 rounded-full bg-yellow-400/50 blur-xl"></div>
+        <div className="relative z-10 mt-20 size-full md:order-2">
+          <div className="absolute -right-5 top-5 -z-10 size-60 rounded-full bg-yellow-400/50 blur-xl md:right-5 md:top-12 md:size-64 lg:right-2 lg:top-12 lg:size-52"></div>
           <FloatingParticlesEffect />
           <Image
-            src="/illustrations/krishna.svg"
-            alt="Beautiful temple in Mathura-Vrindavan"
-            className="size-full -scale-x-100 object-cover"
+            src="/illustrations/krishna-cow.svg"
+            alt="shri krishna"
+            className="size-full object-contain"
           />
         </div>
       </div>

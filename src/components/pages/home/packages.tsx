@@ -6,9 +6,13 @@ import SectionWrapper from '@components/wrappers/section-wrapper';
 import { packageResponsiveness, packagesData } from '@constants/static-data';
 import PackageCard from '@components/cards/package-card';
 import SliderCarousel from '@components/carousel/slider-carousel';
+import { Button } from '@bugg-m/bugg-ui';
+import usePathNavigator from '@hooks/useNavigator';
+import { RouteEnums } from '@enums/route-enums';
 
 const PackagesSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const { navigateTo } = usePathNavigator();
 
   const filters = ['All', 'Easy', 'Moderate', 'Challenging', 'Popular'];
 
@@ -50,6 +54,11 @@ const PackagesSection: React.FC = () => {
         renderItem={(packageItem) => <PackageCard packageItem={packageItem} />}
         responsive={packageResponsiveness}
       />
+      <div className="w-full text-center">
+        <Button rounded="full" onClick={() => navigateTo(RouteEnums.PACKAGES)}>
+          View all
+        </Button>
+      </div>
     </SectionWrapper>
   );
 };

@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="relative min-h-screen min-w-full font-mono">
+        <main className="relative min-h-screen min-w-full">
           <header className="fixed top-0 z-50 w-full">
             <Header />
           </header>
@@ -41,7 +41,7 @@ export default function RootLayout({
           </aside> */}
 
           {children}
-          <footer className="border-t border-primary-200">
+          <footer className="border-t border-primary-200 bg-secondary-100">
             <Footer />
           </footer>
           <Toaster position="top-center" reverseOrder={true} />
