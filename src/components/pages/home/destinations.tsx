@@ -1,6 +1,6 @@
 // import Link from 'next/link';
 import React from 'react';
-import { Card, Image } from '@bugg-m/bugg-ui';
+import { Button, Card, Image } from '@bugg-m/bugg-ui';
 import SliderCarousel from '@components/carousel/slider-carousel';
 import SectionHeader from '@components/wrappers/section-header';
 import SectionWrapper from '@components/wrappers/section-wrapper';
@@ -8,8 +8,11 @@ import {
   destinationResponsiveness,
   destinations,
 } from '@constants/static-data';
+import usePathNavigator from '@hooks/useNavigator';
+import { RouteEnums } from '@enums/route-enums';
 
 const Destinations = () => {
+  const { navigateTo } = usePathNavigator();
   const renderCard = (dest: (typeof destinations)[0]) => (
     <Card
       key={dest.name}
@@ -52,6 +55,14 @@ const Destinations = () => {
         renderItem={renderCard}
         responsive={destinationResponsiveness}
       />
+      <div className="w-full text-center">
+        <Button
+          rounded="full"
+          onClick={() => navigateTo(RouteEnums.DESTINATION)}
+        >
+          View all
+        </Button>
+      </div>
     </SectionWrapper>
   );
 };

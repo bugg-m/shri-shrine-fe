@@ -160,7 +160,7 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
           <h4 className="mb-1 text-sm font-semibold text-neutral-700">
             Includes
           </h4>
-          <div className="flex h-12 flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {packageItem.inclusions.map((inclusion, index) => (
               <span
                 key={index}

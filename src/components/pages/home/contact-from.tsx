@@ -67,8 +67,8 @@ const ContactForm: React.FC = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact Info */}
           <div>
-            <h2 className="mb-6 text-3xl font-bold text-gray-800">
-              Plan Your Sacred Journey
+            <h2 className="mb-4 text-3xl font-bold text-neutral-900 md:text-4xl">
+              Plan Your <span className="text-primary-600">Sacred Journey</span>
             </h2>
             <p className="mb-8 leading-relaxed text-gray-600">
               Ready to embark on a transformative pilgrimage? Our spiritual
