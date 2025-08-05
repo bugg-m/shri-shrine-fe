@@ -2,8 +2,8 @@ import { RouteEnums } from '@enums/route-enums';
 
 const menuItems = [
   { href: RouteEnums.HOME, id: 1, label: 'home' },
-  // { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
-  // { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
+  { href: RouteEnums.DESTINATION, id: 2, label: 'Destinations' },
+  { href: RouteEnums.PACKAGES, id: 3, label: 'Packages' },
   // { href: RouteEnums.ITINERARIES, id: 4, label: 'Itineraries' },
   // { href: RouteEnums.BLOG, id: 5, label: 'Blog' },
   // { href: RouteEnums.ABOUT, id: 6, label: 'About Us' },

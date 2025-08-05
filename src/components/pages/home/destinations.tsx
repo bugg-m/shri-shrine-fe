@@ -10,6 +10,7 @@ import {
 } from '@constants/static-data';
 import usePathNavigator from '@hooks/useNavigator';
 import { RouteEnums } from '@enums/route-enums';
+import Link from 'next/link';
 
 const Destinations = () => {
   const { navigateTo } = usePathNavigator();
@@ -30,13 +31,13 @@ const Destinations = () => {
       />
       <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
         <span className="text-xl font-bold">{dest.name}</span>
-        <p className="text-sm text-neutral-100">{dest.description}</p>
-        {/* <Link
-          href={dest.href}
+        <p className="text-sm text-neutral-100">{dest.subTitle}</p>
+        <Link
+          href={dest.slug}
           className="mt-2 inline-block text-xs text-primary-500 underline hover:text-primary-400"
         >
           Explore →
-        </Link> */}
+        </Link>
       </div>
     </Card>
   );
