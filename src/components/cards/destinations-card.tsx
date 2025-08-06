@@ -1,6 +1,7 @@
 import { Button, Card, Image } from '@bugg-m/bugg-ui';
 import DynamicTags from '@components/ui/tag';
 import { destinations } from '@constants/static-data';
+import usePathNavigator from '@hooks/useNavigator';
 import { ArrowRight, Star } from 'lucide-react';
 import React from 'react';
 
@@ -9,6 +10,7 @@ const DestinationsCard = ({
 }: {
   destination: (typeof destinations)[0];
 }) => {
+  const { navigateTo } = usePathNavigator();
   return (
     <Card
       className="group overflow-hidden p-0"
@@ -23,7 +25,7 @@ const DestinationsCard = ({
           className="size-full object-fill transition-transform duration-300 group-hover:scale-110"
         />
         <div className="absolute left-2 top-2">
-          <span className="rounded-full border border-secondary-50 bg-white/50 px-2 py-1 text-xs font-medium text-neutral-800 backdrop-blur">
+          <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-neutral-50 backdrop-blur">
             {destination.category}
           </span>
         </div>
@@ -51,6 +53,7 @@ const DestinationsCard = ({
         </div>
 
         <Button
+          onClick={() => navigateTo(destination.slug)}
           size="sm"
           rounded="full"
           className="flex items-center justify-center gap-2 text-sm"
