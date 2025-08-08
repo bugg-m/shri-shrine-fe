@@ -1,65 +1,47 @@
-import { Card, Image } from '@bugg-m/bugg-ui';
-import { Clock, MapPin, ArrowRight, Heart, CheckCircle } from 'lucide-react';
-import React, { useState } from 'react';
+import React from 'react';
+import { Button, Card, Image } from '@bugg-m/bugg-ui';
+import { TravelPackage } from '@constants/static-data';
+import {
+  Clock,
+  MapPin,
+  ArrowRight,
+  Users,
+  Star,
+  IndianRupee,
+} from 'lucide-react';
+import usePathNavigator from '@hooks/useNavigator';
+import DynamicTags from '@components/ui/tag';
+import { usePathname } from 'next/navigation';
 
-export interface PackageCardProps {
-  id: string;
-  title: string;
-  destination: string;
-  image: string;
-  price: number;
-  originalPrice?: number;
-  duration: string;
-  rating: number;
-  reviews: number;
-  difficulty: 'Easy' | 'Moderate' | 'Challenging';
-  highlights: string[];
-  inclusions: string[];
-  badge?: string;
-  isPopular?: boolean;
-}
-
-const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
+const PackageCard: React.FC<{ packageItem: TravelPackage }> = ({
   packageItem,
 }) => {
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
-  const toggleFavorite = (packageId: string) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(packageId)) {
-      newFavorites.delete(packageId);
+  const pathname = usePathname();
+  const { navigateTo } = usePathNavigator();
+
+  const viewPackageDetails = () => {
+    if (pathname === '/') {
+      navigateTo(`/packages/${packageItem.slug}`);
     } else {
-      newFavorites.add(packageId);
+      navigateTo(packageItem.slug);
     }
-    setFavorites(newFavorites);
   };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'Easy':
-        return 'bg-primary-100 text-primary-800';
+        return 'bg-green-100 text-green-700';
       case 'Moderate':
-        return 'bg-primary-100 text-primary-800';
-      case 'Challenging':
-        return 'bg-primary-100 text-primary-800';
+        return 'bg-yellow-100 text-yellow-700';
+      case 'Moderate to Difficult':
+        return 'bg-orange-100 text-orange-700';
+      case 'Difficult':
+        return 'bg-red-100 text-red-700';
       default:
-        return 'bg-secondary-100 text-neutral-800';
+        return 'bg-gray-100 text-neutral-700';
     }
   };
 
-  const getBadgeColor = (badge: string) => {
-    switch (badge) {
-      case 'Best Seller':
-        return 'bg-primary-500 text-white';
-      case 'Premium':
-        return 'bg-purple-500 text-white';
-      case 'Family Friendly':
-        return 'bg-blue-500 text-white';
-      case 'Adventure':
-        return 'bg-primary-600 text-white';
-      default:
-        return 'bg-secondary-500 text-white';
-    }
-  };
   return (
     <Card
       className="group overflow-hidden p-0"
@@ -67,130 +49,101 @@ const PackageCard: React.FC<{ packageItem: PackageCardProps }> = ({
       colorScheme="secondary"
       tone={200}
     >
-      {/* Image Container */}
-      <section className="relative overflow-hidden">
+      <section className="relative h-48 overflow-hidden">
         <Image
           src={packageItem.image}
-          alt={packageItem.title}
-          className="h-44 w-full object-fill transition-transform duration-500 group-hover:scale-110"
+          alt={packageItem.name}
+          className="size-full object-fill transition-transform duration-300 group-hover:scale-110"
         />
 
-        {/* Badges */}
         <div className="absolute left-4 top-4 flex flex-col gap-2">
-          {packageItem.badge && (
-            <span
-              className={`rounded-full px-2 py-1 text-xs font-semibold ${getBadgeColor(packageItem.badge)}`}
-            >
-              {packageItem.badge}
-            </span>
-          )}
+          <span className="rounded-full bg-primary-500 px-2 py-0.5 text-xs font-medium text-white">
+            {packageItem.category}
+          </span>
           <span
-            className={`rounded-full px-2 py-1 text-xs font-medium ${getDifficultyColor(packageItem.difficulty)}`}
+            className={`rounded-full px-2 py-0.5 text-xs font-medium ${getDifficultyColor(packageItem.difficulty)}`}
           >
             {packageItem.difficulty}
           </span>
         </div>
-
-        {/* Favorite Button */}
-        <button
-          onClick={() => toggleFavorite(packageItem.id)}
-          className="absolute right-4 top-4 rounded-full bg-white/90 p-2 backdrop-blur-sm transition-colors hover:bg-white"
-        >
-          <Heart
-            className={`size-5 ${
-              favorites.has(packageItem.id)
-                ? 'fill-current text-red-500'
-                : 'text-neutral-600'
-            }`}
-          />
-        </button>
+        <div className="absolute right-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-2 py-1 backdrop-blur-sm">
+          <Star className="size-4 fill-current text-yellow-500" />
+          <span className="text-xs font-medium">{packageItem.rating}</span>
+        </div>
       </section>
 
-      {/* Content */}
-      <main className="space-y-3 p-4">
-        {/* Title & Location */}
-        <section>
-          <h3 className="mb-2 text-lg font-bold text-neutral-700">
-            {packageItem.title}
-          </h3>
-          <div className="grid grid-cols-2 gap-2 text-xs text-neutral-500">
-            <span className="flex">
-              <MapPin className="mr-1 size-4" />
-              {packageItem.destination}
-            </span>
-            <span className="flex">
-              <Clock className="mr-1 size-3" />
-              <span>{packageItem.duration}</span>
-            </span>
-          </div>
-        </section>
+      <main className="p-4">
+        <h3 className="mb-1 line-clamp-1 font-bold leading-5 text-neutral-700">
+          {packageItem.name}
+        </h3>
+        <p className="mb-2 line-clamp-1 text-xs text-neutral-600">
+          {packageItem.shortDescription}
+        </p>
 
-        {/* Quick Info */}
-        {/* <section className="grid grid-cols-2 text-xs text-neutral-600">
-          <div className="flex items-center">
-            <Clock className="size-3 mr-1" />
+        {/* Package Details */}
+        <section className="mb-3 flex items-center gap-4 text-xs text-neutral-500">
+          <div className="flex items-center gap-1">
+            <Clock className="size-4" />
             <span>{packageItem.duration}</span>
           </div>
-          <div className="flex items-center">
-            <Star className="size-3 mr-1 text-primary-400 fill-current" />
-            <span>
-              {packageItem.rating} ({packageItem.reviews})
-            </span>
+          <div className="flex items-center gap-1">
+            <Users className="size-4" />
+            <span>{packageItem.groupSize}</span>
           </div>
-        </section> */}
-
-        {/* Highlights */}
-        <section>
-          <h4 className="text-sm font-semibold text-neutral-700">Highlights</h4>
-          <div className="space-y-0.5">
-            {packageItem.highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="ml-2 flex items-center text-xs text-neutral-600"
-              >
-                <CheckCircle className="mr-2 size-3 text-primary-500" />
-                {highlight}
-              </div>
-            ))}
+          <div className="flex items-center gap-1">
+            <MapPin className="size-4" />
+            <span>{packageItem.destinations.length} destinations</span>
           </div>
         </section>
 
-        {/* Inclusions */}
-        <section>
+        {/* Destinations */}
+        <section className="mb-3">
+          <p className="mb-2 text-sm text-neutral-500">Destinations:</p>
+          <DynamicTags tags={packageItem.destinations} />
+        </section>
+
+        <section className="mb-4">
           <h4 className="mb-1 text-sm font-semibold text-neutral-700">
             Includes
           </h4>
-          <div className="flex flex-wrap gap-2">
-            {packageItem.inclusions.map((inclusion, index) => (
-              <span
-                key={index}
-                className="flex-center h-4 rounded-sm bg-secondary-100 px-1 text-2xs text-neutral-600"
-              >
-                {inclusion}
-              </span>
-            ))}
-          </div>
+          <DynamicTags tags={packageItem.includes} />
         </section>
 
-        {/* Price & CTA */}
-        <section className="flex flex-col items-center justify-between gap-2">
+        {/* Price */}
+        <div className="flex-center mb-2">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-primary-900">
-              ₹{packageItem.price.toLocaleString()}
+            <span className="flex items-center text-2xl font-bold text-primary-600">
+              <IndianRupee className="size-5" />
+              {packageItem.price.toLocaleString()}
             </span>
-            {packageItem.originalPrice && (
-              <span className="text-xs text-neutral-500 line-through">
-                ₹{packageItem.originalPrice.toLocaleString()}
+            {/* {packageItem.originalPrice > packageItem.price && (
+              <span className="flex items-center text-sm text-neutral-500 line-through">
+                <IndianRupee className="size-3" />
+                {packageItem.originalPrice.toLocaleString()}
               </span>
-            )}
+            )} */}
             <span className="text-xs text-neutral-500">per person</span>
           </div>
 
-          <button className="flex-center group w-full gap-2 rounded-lg bg-gradient-to-r from-primary-500 to-primary-500 py-1 font-semibold text-white transition-all duration-200 hover:from-primary-600 hover:to-primary-600">
-            Book Now
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-          </button>
-        </section>
+          {/* {packageItem.originalPrice > packageItem.price && (
+            <div className="text-right">
+              <span className="rounded-full bg-primary-50 px-2 py-1 text-2xs text-primary-700">
+                Save ₹
+                {(
+                  packageItem.originalPrice - packageItem.price
+                ).toLocaleString()}
+              </span>
+            </div>
+          )} */}
+        </div>
+
+        <Button
+          onClick={viewPackageDetails}
+          className="flex w-full items-center justify-center gap-2 py-3"
+        >
+          View Package Details
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+        </Button>
       </main>
     </Card>
   );

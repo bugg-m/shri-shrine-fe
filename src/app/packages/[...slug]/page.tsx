@@ -1,150 +1,32 @@
-import React, { useState } from 'react';
+'use client';
+import React, { use, useState } from 'react';
 import {
-  MapPin,
   Clock,
   Star,
   Calendar,
   Users,
   ArrowRight,
-  ChevronRight,
   Check,
   X,
-  Heart,
-  Share2,
   Phone,
   Mail,
   IndianRupee,
   AlertCircle,
   Mountain,
   Utensils,
-  Car,
   Home,
-  Shield,
-  Camera,
+  CheckCircle,
 } from 'lucide-react';
+import { packagesData } from '@constants/static-data';
+import { Image } from '@bugg-m/bugg-ui';
 
-// Sample package data - in real app, this would be fetched based on slug
-const packageData = {
-  id: 1,
-  slug: 'divine-amarnath-yatra',
-  name: 'Divine Amarnath Yatra',
-  shortDescription: 'Sacred journey to the ice lingam of Lord Shiva',
-  longDescription:
-    'Embark on the ultimate spiritual journey to the sacred Amarnath Cave, nestled in the pristine Himalayas of Kashmir. This divine pilgrimage takes you to witness the naturally formed ice lingam of Lord Shiva, where according to Hindu mythology, Lord Shiva revealed the secret of immortality to Mata Parvati. Experience the profound spiritual energy, breathtaking mountain vistas, and the devotion of thousands of pilgrims on this transformative journey.',
-  image: '/images/amarnath.jpg',
-  gallery: [
-    '/images/amarnath.jpg',
-    '/images/amarnath-cave.jpg',
-    '/images/amarnath-trek.jpg',
-    '/images/amarnath-camp.jpg',
-  ],
-  duration: '7 days',
-  price: 25000,
-  originalPrice: 30000,
-  difficulty: 'Moderate to Difficult',
-  groupSize: '15-20 people',
-  rating: 4.8,
-  reviews: 342,
-  category: 'Adventure Pilgrimage',
-  bestTime: 'July to August',
-  destinations: ['Jammu', 'Pahalgam', 'Chandanwari', 'Amarnath Cave'],
-  highlights: [
-    'Sacred ice lingam darshan at 3,888m altitude',
-    'Helicopter ride option available (additional cost)',
-    'Experienced local guides and medical support',
-    'Spiritual lectures by learned saints',
-    'Traditional Kashmiri hospitality',
-    'Medical kit and oxygen support throughout journey',
-  ],
-  includes: [
-    'Accommodation in base camps and hotels',
-    'All vegetarian meals during the journey',
-    'Professional guides and porters',
-    'Medical kit and oxygen cylinders',
-    'Transportation from Jammu to base camp',
-    'All necessary permits and registrations',
-    'Travel insurance coverage',
-    'Emergency evacuation support',
-  ],
-  excludes: [
-    'Flight tickets to/from Jammu',
-    'Personal expenses and shopping',
-    'Helicopter rides (optional)',
-    'Medical expenses not covered by insurance',
-    'Tips for guides and porters',
-    'Any meals not mentioned in inclusions',
-  ],
-  itinerary: [
-    {
-      day: 1,
-      title: 'Arrival in Jammu',
-      description:
-        'Arrive at Jammu airport/railway station. Transfer to hotel. Evening briefing about the yatra. Overnight stay in Jammu.',
-      meals: 'Dinner',
-      accommodation: 'Hotel in Jammu',
-    },
-    {
-      day: 2,
-      title: 'Jammu to Pahalgam',
-      description:
-        'Early morning departure to Pahalgam via Anantnag. En route visit Awantipura ruins. Check-in at Pahalgam. Rest and acclimatization.',
-      meals: 'Breakfast, Lunch, Dinner',
-      accommodation: 'Hotel in Pahalgam',
-    },
-    {
-      day: 3,
-      title: 'Pahalgam to Chandanwari',
-      description:
-        'Trek begins from Pahalgam to Chandanwari (16 km). This is the actual start of the Amarnath Yatra. Overnight camping.',
-      meals: 'Breakfast, Lunch, Dinner',
-      accommodation: 'Camping at Chandanwari',
-    },
-    {
-      day: 4,
-      title: 'Chandanwari to Sheshnag',
-      description:
-        'Trek from Chandanwari to Sheshnag Lake (13 km). Beautiful alpine lake surrounded by snow-capped peaks. Overnight camping.',
-      meals: 'Breakfast, Lunch, Dinner',
-      accommodation: 'Camping at Sheshnag',
-    },
-    {
-      day: 5,
-      title: 'Sheshnag to Panchtarni',
-      description:
-        'Trek to Panchtarni via Mahagunas Pass (14 km). The most challenging part of the trek. Overnight camping.',
-      meals: 'Breakfast, Lunch, Dinner',
-      accommodation: 'Camping at Panchtarni',
-    },
-    {
-      day: 6,
-      title: 'Panchtarni to Amarnath Cave and back',
-      description:
-        'Early morning trek to the holy Amarnath Cave (6 km). Darshan of the ice lingam. Return to Panchtarni for overnight stay.',
-      meals: 'Breakfast, Lunch, Dinner',
-      accommodation: 'Camping at Panchtarni',
-    },
-    {
-      day: 7,
-      title: 'Return to Jammu and Departure',
-      description:
-        'Return journey to Jammu via helicopter or the same trekking route (as per choice). Transfer to airport/railway station for departure.',
-      meals: 'Breakfast, Lunch',
-      accommodation: 'Day use hotel in Jammu',
-    },
-  ],
-  bookingInfo: {
-    advancePayment: 10000,
-    cancellationPolicy: 'Cancellation charges apply as per terms',
-    lastBookingDate: '30 days before departure',
-    documentsRequired: [
-      'Aadhar Card',
-      'Medical Certificate',
-      'Passport size photos',
-    ],
-  },
-};
+export default function PackageDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
 
-export default function PackageDetailPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [selectedImage, setSelectedImage] = useState(0);
   const [showBookingForm, setShowBookingForm] = useState(false);
@@ -159,52 +41,37 @@ export default function PackageDetailPage() {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'Easy':
-        return 'bg-green-100 text-green-700';
+        return 'bg-primary-100 text-primary-700';
       case 'Moderate':
         return 'bg-yellow-100 text-yellow-700';
       case 'Moderate to Difficult':
-        return 'bg-orange-100 text-orange-700';
+        return 'bg-primary-100 text-primary-700';
       case 'Difficult':
         return 'bg-red-100 text-red-700';
       default:
-        return 'bg-gray-100 text-gray-700';
+        return 'bg-secondary-100 text-neutral-700';
     }
   };
 
+  const packageData: (typeof packagesData)[0] = packagesData.find(
+    (packages) => packages.slug === slug[0]
+  )!;
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-secondary-50">
       {/* Hero Section */}
       <div className="relative h-96 overflow-hidden md:h-[500px]">
-        <img
+        <Image
           src={packageData.gallery[selectedImage]}
           alt={packageData.name}
           className="size-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
-        {/* Breadcrumb */}
-        <div className="absolute left-4 top-4 flex items-center text-sm text-white/80">
-          <span>Home</span>
-          <ChevronRight className="mx-2 size-4" />
-          <span>Packages</span>
-          <ChevronRight className="mx-2 size-4" />
-          <span className="text-white">{packageData.name}</span>
-        </div>
-
-        {/* Actions */}
-        <div className="absolute right-4 top-4 flex gap-2">
-          <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/30">
-            <Heart className="size-5" />
-          </button>
-          <button className="rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/30">
-            <Share2 className="size-5" />
-          </button>
-        </div>
-
         {/* Content */}
         <div className="absolute inset-x-6 bottom-6">
           <div className="mb-3 flex items-center gap-2">
-            <span className="rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
+            <span className="rounded-full bg-primary-500 px-3 py-1 text-sm font-medium text-white">
               {packageData.category}
             </span>
             <span
@@ -260,7 +127,7 @@ export default function PackageDetailPage() {
                 selectedImage === index ? 'border-white' : 'border-white/50'
               }`}
             >
-              <img src={img} alt="" className="size-full object-cover" />
+              <Image src={img} alt="" className="size-full object-cover" />
             </button>
           ))}
         </div>
@@ -272,18 +139,18 @@ export default function PackageDetailPage() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
               <div className="mb-2 flex items-center gap-3">
-                <span className="flex items-center text-3xl font-bold text-orange-600">
+                <span className="flex items-center text-3xl font-bold text-primary-600">
                   <IndianRupee className="size-6" />
                   {packageData.price.toLocaleString()}
                 </span>
                 {packageData.originalPrice > packageData.price && (
-                  <span className="flex items-center text-lg text-gray-500 line-through">
+                  <span className="flex items-center text-lg text-neutral-500 line-through">
                     <IndianRupee className="size-4" />
                     {packageData.originalPrice.toLocaleString()}
                   </span>
                 )}
                 {packageData.originalPrice > packageData.price && (
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+                  <span className="rounded-full bg-primary-100 px-3 py-1 text-sm font-medium text-primary-700">
                     Save ₹
                     {(
                       packageData.originalPrice - packageData.price
@@ -291,18 +158,18 @@ export default function PackageDetailPage() {
                   </span>
                 )}
               </div>
-              <p className="text-gray-600">per person (all inclusive)</p>
+              <p className="text-neutral-600">per person (all inclusive)</p>
             </div>
 
             <div className="flex gap-3">
               <button
                 onClick={() => setShowBookingForm(true)}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-3 font-semibold text-white transition-all hover:from-orange-600 hover:to-amber-600"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-500 px-8 py-3 font-semibold text-white transition-all hover:from-primary-600 hover:to-primary-600"
               >
                 Book Now
                 <ArrowRight className="size-4" />
               </button>
-              <button className="flex items-center gap-2 rounded-xl border border-orange-500 px-6 py-3 font-semibold text-orange-600 transition-all hover:bg-orange-50">
+              <button className="flex items-center gap-2 rounded-xl border border-primary-500 px-6 py-3 font-semibold text-primary-600 transition-all hover:bg-primary-50">
                 <Phone className="size-4" />
                 Call Us
               </button>
@@ -311,15 +178,15 @@ export default function PackageDetailPage() {
         </div>
 
         {/* Tabs */}
-        <div className="mb-8 flex flex-wrap gap-1 rounded-xl bg-white p-1 shadow-sm">
+        <div className="mb-8 inline-flex flex-wrap gap-2 rounded-md bg-white p-1.5 shadow-sm">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`rounded-lg px-4 py-3 font-medium transition-all ${
                 activeTab === tab.id
-                  ? 'bg-orange-500 text-white shadow-md'
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'bg-primary-500 text-white shadow-md'
+                  : 'text-neutral-600 hover:bg-secondary-100'
               }`}
             >
               {tab.label}
@@ -332,37 +199,37 @@ export default function PackageDetailPage() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2">
               <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h2 className="mb-4 text-2xl font-bold text-gray-800">
+                <h2 className="mb-4 text-2xl font-bold text-neutral-800">
                   About This Package
                 </h2>
-                <p className="leading-relaxed text-gray-600">
+                <p className="leading-relaxed text-neutral-600">
                   {packageData.longDescription}
                 </p>
               </div>
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-xl font-bold text-gray-800">
+                <h3 className="mb-4 text-xl font-bold text-neutral-800">
                   Package Highlights
                 </h3>
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                   {packageData.highlights.map((highlight, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <Check className="mt-0.5 size-5 shrink-0 text-green-500" />
-                      <span className="text-gray-700">{highlight}</span>
+                      <CheckCircle className="mt-0.5 size-5 shrink-0 text-primary-500" />
+                      <span className="text-neutral-700">{highlight}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-xl font-bold text-gray-800">
+                <h3 className="mb-4 text-xl font-bold text-neutral-800">
                   Destinations Covered
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {packageData.destinations.map((dest, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-orange-100 px-4 py-2 font-medium text-orange-700"
+                      className="rounded-full bg-primary-100 px-4 py-2 font-medium text-primary-700"
                     >
                       {dest}
                     </span>
@@ -373,20 +240,20 @@ export default function PackageDetailPage() {
 
             <div className="space-y-6">
               <div className="rounded-2xl bg-white p-6 shadow-sm">
-                <h3 className="mb-4 text-xl font-bold text-gray-800">
+                <h3 className="mb-4 text-xl font-bold text-neutral-800">
                   Package Details
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Duration:</span>
+                    <span className="text-neutral-600">Duration:</span>
                     <span className="font-medium">{packageData.duration}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Group Size:</span>
+                    <span className="text-neutral-600">Group Size:</span>
                     <span className="font-medium">{packageData.groupSize}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Difficulty:</span>
+                    <span className="text-neutral-600">Difficulty:</span>
                     <span
                       className={`rounded-full px-2 py-1 text-sm ${getDifficultyColor(packageData.difficulty)}`}
                     >
@@ -394,7 +261,7 @@ export default function PackageDetailPage() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Best Time:</span>
+                    <span className="text-neutral-600">Best Time:</span>
                     <span className="font-medium">{packageData.bestTime}</span>
                   </div>
                 </div>
@@ -422,26 +289,26 @@ export default function PackageDetailPage() {
 
         {activeTab === 'itinerary' && (
           <div className="rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+            <h2 className="mb-6 text-2xl font-bold text-neutral-800">
               Detailed Itinerary
             </h2>
             <div className="space-y-6">
               {packageData.itinerary.map((day, index) => (
                 <div
                   key={index}
-                  className="relative border-l-4 border-orange-500 pb-6 pl-6"
+                  className="relative border-l-4 border-primary-500 pb-6 pl-6"
                 >
-                  <div className="absolute -left-3 top-0 flex size-6 items-center justify-center rounded-full bg-orange-500">
+                  <div className="absolute -left-3 top-0 flex size-6 items-center justify-center rounded-full bg-primary-500">
                     <span className="text-sm font-bold text-white">
                       {day.day}
                     </span>
                   </div>
-                  <h3 className="mb-2 text-lg font-bold text-gray-800">
+                  <h3 className="mb-2 text-lg font-bold text-neutral-800">
                     {day.title}
                   </h3>
-                  <p className="mb-3 text-gray-600">{day.description}</p>
+                  <p className="mb-3 text-neutral-600">{day.description}</p>
                   <div className="flex flex-wrap gap-4 text-sm">
-                    <div className="flex items-center gap-1 text-green-600">
+                    <div className="flex items-center gap-1 text-primary-600">
                       <Utensils className="size-4" />
                       <span>{day.meals}</span>
                     </div>
@@ -459,15 +326,15 @@ export default function PackageDetailPage() {
         {activeTab === 'inclusions' && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-green-700">
+              <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-primary-700">
                 <Check className="size-5" />
                 What&apos;s Included
               </h3>
               <div className="space-y-3">
                 {packageData.includes.map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <Check className="mt-1 size-4 shrink-0 text-green-500" />
-                    <span className="text-gray-700">{item}</span>
+                    <Check className="mt-1 size-4 shrink-0 text-primary-500" />
+                    <span className="text-neutral-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -482,7 +349,7 @@ export default function PackageDetailPage() {
                 {packageData.excludes.map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <X className="mt-1 size-4 shrink-0 text-red-500" />
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-neutral-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -492,24 +359,24 @@ export default function PackageDetailPage() {
 
         {activeTab === 'booking' && (
           <div className="rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+            <h2 className="mb-6 text-2xl font-bold text-neutral-800">
               Booking Information
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-gray-800">
+                <h3 className="mb-3 text-lg font-semibold text-neutral-800">
                   Payment Details
                 </h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Advance Payment:</span>
+                    <span className="text-neutral-600">Advance Payment:</span>
                     <span className="flex items-center font-medium">
                       <IndianRupee className="size-4" />
                       {packageData.bookingInfo.advancePayment.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Remaining Amount:</span>
+                    <span className="text-neutral-600">Remaining Amount:</span>
                     <span className="flex items-center font-medium">
                       <IndianRupee className="size-4" />
                       {(
@@ -519,7 +386,7 @@ export default function PackageDetailPage() {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Last Booking Date:</span>
+                    <span className="text-neutral-600">Last Booking Date:</span>
                     <span className="font-medium">
                       {packageData.bookingInfo.lastBookingDate}
                     </span>
@@ -528,15 +395,15 @@ export default function PackageDetailPage() {
               </div>
 
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-gray-800">
+                <h3 className="mb-3 text-lg font-semibold text-neutral-800">
                   Required Documents
                 </h3>
                 <div className="space-y-2">
                   {packageData.bookingInfo.documentsRequired.map(
                     (doc, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <Check className="size-4 text-green-500" />
-                        <span className="text-gray-700">{doc}</span>
+                        <Check className="size-4 text-primary-500" />
+                        <span className="text-neutral-700">{doc}</span>
                       </div>
                     )
                   )}
@@ -563,7 +430,7 @@ export default function PackageDetailPage() {
 
       {/* Similar Packages Section */}
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
+        <h2 className="mb-8 text-center text-3xl font-bold text-neutral-800">
           Similar Packages You Might Like
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -595,7 +462,7 @@ export default function PackageDetailPage() {
               className="overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl"
             >
               <div className="h-48 overflow-hidden">
-                <img
+                <Image
                   src={pkg.image}
                   alt={pkg.name}
                   className="size-full object-cover transition-transform duration-300 hover:scale-105"
@@ -604,7 +471,7 @@ export default function PackageDetailPage() {
               <div className="p-4">
                 <h3 className="mb-2 text-lg font-bold">{pkg.name}</h3>
                 <div className="mb-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 text-sm text-neutral-600">
                     <Clock className="size-4" />
                     <span>{pkg.duration}</span>
                   </div>
@@ -614,11 +481,11 @@ export default function PackageDetailPage() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center text-xl font-bold text-orange-600">
+                  <span className="flex items-center text-xl font-bold text-primary-600">
                     <IndianRupee className="size-5" />
                     {pkg.price.toLocaleString()}
                   </span>
-                  <button className="rounded-lg bg-orange-500 px-4 py-2 text-white transition-all hover:bg-orange-600">
+                  <button className="rounded-lg bg-primary-500 px-4 py-2 text-white transition-all hover:bg-primary-600">
                     View Details
                   </button>
                 </div>
@@ -629,9 +496,9 @@ export default function PackageDetailPage() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="bg-gradient-to-r from-orange-50 to-amber-50 py-12">
+      <div className="bg-gradient-to-r from-primary-50 to-primary-50 py-12">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
+          <h2 className="mb-8 text-center text-3xl font-bold text-neutral-800">
             What Our Pilgrims Say
           </h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -664,14 +531,14 @@ export default function PackageDetailPage() {
                     />
                   ))}
                 </div>
-                <p className="mb-4 italic text-gray-600">
+                <p className="mb-4 italic text-neutral-600">
                   &quot; {testimonial.text} &quot;
                 </p>
                 <div>
-                  <div className="font-semibold text-gray-800">
+                  <div className="font-semibold text-neutral-800">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-neutral-500">
                     {testimonial.location}
                   </div>
                 </div>
@@ -683,7 +550,7 @@ export default function PackageDetailPage() {
 
       {/* FAQ Section */}
       <div className="mx-auto max-w-4xl px-4 py-12">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-800">
+        <h2 className="mb-8 text-center text-3xl font-bold text-neutral-800">
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">
@@ -710,18 +577,18 @@ export default function PackageDetailPage() {
             },
           ].map((faq, index) => (
             <div key={index} className="rounded-2xl bg-white p-6 shadow-sm">
-              <h3 className="mb-2 font-semibold text-gray-800">{faq.q}</h3>
-              <p className="text-gray-600">{faq.a}</p>
+              <h3 className="mb-2 font-semibold text-neutral-800">{faq.q}</h3>
+              <p className="text-neutral-600">{faq.a}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Contact Section */}
-      <div className="bg-gradient-to-r from-orange-600 to-amber-600 py-12 text-white">
+      <div className="bg-gradient-to-r from-primary-600 to-primary-600 py-12 text-white">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-4 text-3xl font-bold">Still Have Questions?</h2>
-          <p className="mb-8 text-lg text-orange-100">
+          <p className="mb-8 text-lg text-primary-100">
             Our travel experts are here to help you plan your perfect spiritual
             journey
           </p>
@@ -734,7 +601,7 @@ export default function PackageDetailPage() {
               <Mail className="size-5" />
               <span className="font-medium">info@shrishrine.com</span>
             </div>
-            <button className="rounded-full bg-white px-8 py-3 font-semibold text-orange-600 transition-all hover:bg-orange-50">
+            <button className="rounded-full bg-white px-8 py-3 font-semibold text-primary-600 transition-all hover:bg-primary-50">
               Get Free Consultation
             </button>
           </div>
@@ -749,17 +616,17 @@ export default function PackageDetailPage() {
               <h3 className="text-xl font-bold">Book Your Journey</h3>
               <button
                 onClick={() => setShowBookingForm(false)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-neutral-500 hover:text-neutral-700"
               >
                 <X className="size-6" />
               </button>
             </div>
 
-            <div className="mb-4 rounded-lg bg-orange-50 p-3">
-              <h4 className="mb-1 font-semibold text-orange-800">
+            <div className="mb-4 rounded-lg bg-primary-50 p-3">
+              <h4 className="mb-1 font-semibold text-primary-800">
                 {packageData.name}
               </h4>
-              <div className="flex justify-between text-sm text-orange-600">
+              <div className="flex justify-between text-sm text-primary-600">
                 <span>{packageData.duration}</span>
                 <span className="font-medium">
                   ₹{packageData.price.toLocaleString()}/person
@@ -769,49 +636,49 @@ export default function PackageDetailPage() {
 
             <form className="space-y-4">
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-1 block text-sm font-medium text-neutral-700">
                   Full Name *
                 </label>
                 <input
                   type="text"
                   required
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Enter your full name"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-1 block text-sm font-medium text-neutral-700">
                   Email Address *
                 </label>
                 <input
                   type="email"
                   required
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Enter your email"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-1 block text-sm font-medium text-neutral-700">
                   Phone Number *
                 </label>
                 <input
                   type="tel"
                   required
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Enter your phone number"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                  <label className="mb-1 block text-sm font-medium text-neutral-700">
                     Number of People *
                   </label>
                   <select
                     required
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
                     <option value="">Select</option>
                     <option value="1">1 Person</option>
@@ -823,48 +690,48 @@ export default function PackageDetailPage() {
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                  <label className="mb-1 block text-sm font-medium text-neutral-700">
                     Preferred Date
                   </label>
                   <input
                     type="date"
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-1 block text-sm font-medium text-neutral-700">
                   Special Requirements
                 </label>
                 <textarea
                   rows={3}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full rounded-lg border border-secondary-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   placeholder="Any special dietary needs, medical conditions, or other requirements..."
                 ></textarea>
               </div>
 
               <div className="border-t pt-4">
                 <div className="mb-2 flex items-center justify-between">
-                  <span className="text-gray-600">Advance Payment:</span>
+                  <span className="text-neutral-600">Advance Payment:</span>
                   <span className="font-semibold">
                     ₹{packageData.bookingInfo.advancePayment.toLocaleString()}
                   </span>
                 </div>
-                <p className="mb-4 text-xs text-gray-500">
+                <p className="mb-4 text-xs text-neutral-500">
                   Remaining amount to be paid 15 days before departure
                 </p>
               </div>
 
               <div className="mb-4 flex items-start gap-2">
                 <input type="checkbox" id="terms" required className="mt-1" />
-                <label htmlFor="terms" className="text-xs text-gray-600">
+                <label htmlFor="terms" className="text-xs text-neutral-600">
                   I agree to the{' '}
-                  <span className="text-orange-600 underline">
+                  <span className="text-primary-600 underline">
                     terms and conditions
                   </span>{' '}
                   and{' '}
-                  <span className="text-orange-600 underline">
+                  <span className="text-primary-600 underline">
                     cancellation policy
                   </span>
                 </label>
@@ -872,13 +739,13 @@ export default function PackageDetailPage() {
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 py-3 font-semibold text-white transition-all hover:from-orange-600 hover:to-amber-600"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-500 py-3 font-semibold text-white transition-all hover:from-primary-600 hover:to-primary-600"
               >
                 Submit Booking Inquiry
                 <ArrowRight className="size-4" />
               </button>
 
-              <p className="text-center text-xs text-gray-500">
+              <p className="text-center text-xs text-neutral-500">
                 Our team will contact you within 24 hours to confirm your
                 booking
               </p>
@@ -891,14 +758,14 @@ export default function PackageDetailPage() {
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         <button
           onClick={() => setShowBookingForm(true)}
-          className="rounded-full bg-orange-500 p-4 text-white shadow-lg transition-all hover:scale-110 hover:bg-orange-600"
+          className="rounded-full bg-primary-500 p-4 text-white shadow-lg transition-all hover:scale-110 hover:bg-primary-600"
           title="Quick Book"
         >
           <Calendar className="size-6" />
         </button>
 
         <button
-          className="rounded-full bg-green-500 p-4 text-white shadow-lg transition-all hover:scale-110 hover:bg-green-600"
+          className="rounded-full bg-primary-500 p-4 text-white shadow-lg transition-all hover:scale-110 hover:bg-primary-600"
           title="WhatsApp"
         >
           <Phone className="size-6" />

@@ -44,7 +44,7 @@ export default function DestinationDetailPage({
               <span className="text-xs font-medium text-neutral-50">
                 {destinationData.rating}
               </span>
-              <span className="text-sm text-neutral-50">
+              <span className="text-xs text-neutral-50">
                 ({destinationData.reviews})
               </span>
             </div>
