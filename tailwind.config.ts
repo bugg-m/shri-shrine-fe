@@ -56,7 +56,7 @@ export default {
         '5xs': '0.25rem',
         '4xs': '0.3rem',
         '3xs': '0.35rem',
-        '2xs': '0.6rem',
+        '2xs': ['0.6rem', { lineHeight: '0.75rem' }],
       },
     },
   },
